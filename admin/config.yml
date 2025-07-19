@@ -1,0 +1,64 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "tahminler"
+    label: "At Yarışı Tahminleri"
+    folder: "tahminler"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "tahmin"}
+      - {label: "Tarih", name: "tarih", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Başlık", name: "baslik", widget: "string"}
+      - {label: "Pist", name: "pist", widget: "string", default: "İstanbul"}
+      - {label: "Gün", name: "gun", widget: "select", options: ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]}
+      - {label: "Tür", name: "tur", widget: "select", options: ["Altılı Ganyan", "Beşli Ganyan", "Dörtlü Ganyan", "Üçlü Ganyan"]}
+      - {label: "Açıklama", name: "aciklama", widget: "text", default: "Not: Sürpriz beklediğim ayaklar işaretlenmiştir. Bol şanslar!"}
+      - {label: "Google Sheets URL", name: "sheets_url", widget: "string", hint: "Google Sheets'in yayınlanmış URL'si"}
+      - {label: "Öne Çıkan Resim", name: "featured_image", widget: "image", default: "../assets/atyarisitahminleri.jpg"}
+      - {label: "Aktif", name: "aktif", widget: "boolean", default: true}
+      - {label: "Tutan Tahmin", name: "tutan_tahmin", widget: "boolean", default: false}
+      - {label: "İçerik", name: "body", widget: "markdown", hint: "Ek açıklamalar için kullanın"}
+
+  - name: "tutan_tahminler"
+    label: "Tutan Tahminler"
+    folder: "tahminler"
+    filter: {field: "tutan_tahmin", value: true}
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "tahmin"}
+      - {label: "Tarih", name: "tarih", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Başlık", name: "baslik", widget: "string"}
+      - {label: "Pist", name: "pist", widget: "string"}
+      - {label: "Kazanç", name: "kazanc", widget: "number", value_type: "float", hint: "Kazanılan miktar (TL)"}
+      - {label: "Oran", name: "oran", widget: "number", value_type: "float", hint: "Ganyan oranı"}
+      - {label: "Açıklama", name: "aciklama", widget: "text"}
+      - {label: "İçerik", name: "body", widget: "markdown"}
+
+  - name: "site_ayarlari"
+    label: "Site Ayarları"
+    files:
+      - file: "tahminler.json"
+        label: "Tahmin Listesi"
+        name: "tahminler_listesi"
+        fields:
+          - {label: "Son Güncelleme", name: "son_guncelleme", widget: "datetime", format: "YYYY-MM-DD HH:mm", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
+          - {label: "Aktif Tahminler", name: "aktif_tahminler", widget: "list", fields: [{label: "Tarih", name: "tarih", widget: "string"}, {label: "Pist", name: "pist", widget: "string"}, {label: "URL", name: "url", widget: "string"}]}
+          - {label: "Tutan Tahminler", name: "tutan_tahminler", widget: "list", fields: [{label: "Tarih", name: "tarih", widget: "string"}, {label: "Pist", name: "pist", widget: "string"}, {label: "Kazanç", name: "kazanc", widget: "number"}, {label: "URL", name: "url", widget: "string"}]}
+
+  - name: "medya"
+    label: "Medya"
+    files:
+      - file: "assets/"
+        label: "Resimler"
+        name: "resimler"
+        fields:
+          - {label: "Resim", name: "resim", widget: "image"}
+          - {label: "Açıklama", name: "aciklama", widget: "string"}
+          - {label: "Alt Text", name: "alt_text", widget: "string"} 

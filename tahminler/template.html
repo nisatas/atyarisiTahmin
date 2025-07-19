@@ -1,0 +1,123 @@
+---
+layout: tahmin
+tarih: 2025-07-15
+baslik: "15 Temmuz 2025 İstanbul Tahmini"
+pist: "İstanbul"
+gun: "Salı"
+tur: "Altılı Ganyan"
+aciklama: "Not: Sürpriz beklediğim ayaklar işaretlenmiştir. Bol şanslar!"
+sheets_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLphJ_CYa-VUXyvq995bVrp7e2aeuBOLHe0T6vam8c9uph9GngLdnubPnb9Ip174NGvGEaIS3VkUeU/pubhtml?widget=true&headers=false"
+featured_image: "../assets/atyarisitahminleri.jpg"
+aktif: true
+tutan_tahmin: false
+---
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ baslik }} | Beygir Mühendisi</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="Logo" class="logo-img">
+        <span class="logo-title"><span class="logo-title-red">BEYGİR</span> MÜHENDİSİ</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Ana Sayfa</a></li>
+          <li><a href="#">Tahminler</a></li>
+          <li><a href="../tutan_tahminler.html">Tutan Tahminler</a></li>
+          <li><a href="../iletisim.html">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container tahmin-detay-container">
+      <section class="tahmin-detay-card">
+        <div class="tahmin-detay-header">
+          <h1 class="tahmin-detay-baslik">{{ tarih | date: "%d %B %Y" }} <span class="tahmin-detay-pist">{{ pist }}</span></h1>
+          <div class="tahmin-detay-meta">
+            <span class="tahmin-detay-tarih">{{ gun }}</span>
+            <span class="tahmin-detay-rozet">{{ tur }}</span>
+          </div>
+          <div class="tahmin-detay-aciklama-blok">
+            <span class="tahmin-detay-aciklama">{{ aciklama }}</span>
+          </div>
+        </div>
+        <div class="tahmin-tablo-blok">
+          <h3>Yarış Programı ve Tahmin Tablosu</h3>
+          <div class="google-sheet-iframe">
+            <iframe src="{{ sheets_url }}"
+              width="100%" height="550" frameborder="0"></iframe>
+          </div>
+          <p class="tahmin-tablo-aciklama">Tablo Google Sheets'ten otomatik olarak alınmaktadır.</p>
+        </div>
+        {% if body %}
+        <div class="tahmin-ek-aciklama">
+          {{ body }}
+        </div>
+        {% endif %}
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-content container">
+      <div class="footer-logo-title">
+        <img src="../assets/logo.png" alt="Logo" class="footer-logo">
+        <span class="footer-title"><span class="footer-title-red">BEYGİR</span> MÜHENDİSİ</span>
+      </div>
+      <div class="footer-socials">
+        <a href="mailto:info@beygirmuhendisi.com" class="footer-social" target="_blank" rel="noopener" aria-label="E-posta">
+          <img src="../assets/gmail.png" alt="E-posta" class="footer-social-img">
+        </a>
+        <a href="https://twitter.com/" class="footer-social" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <img src="../assets/twitter.png" alt="X (Twitter)" class="footer-social-img">
+        </a>
+        <a href="https://facebook.com/" class="footer-social" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="../assets/facebook.png" alt="Facebook" class="footer-social-img">
+        </a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2025 Beygir Mühendisi. Tüm hakları saklıdır.
+      </div>
+    </div>
+  </footer>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <script>
+    // Mobil menü aç/kapa
+    const menuToggle = document.getElementById('mobile-menu');
+    const nav = document.querySelector('nav ul');
+    const overlay = document.getElementById('mobile-overlay');
+    function openMenu() {
+      nav.classList.add('active');
+      menuToggle.classList.add('active');
+      overlay.classList.add('active');
+    }
+    function closeMenu() {
+      nav.classList.remove('active');
+      menuToggle.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+    menuToggle.addEventListener('click', () => {
+      if (nav.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    overlay.addEventListener('click', closeMenu);
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
+</body>
+</html> 

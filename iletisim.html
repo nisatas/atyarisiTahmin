@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İletişim | Beygir Mühendisi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="assets/logo.png" alt="Logo" class="logo-img">
+        <span class="logo-title"><span class="logo-title-red">BEYGİR</span> MÜHENDİSİ</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="#">Tahminler</a></li>
+          <li><a href="tutan_tahminler.html">Tutan Tahminler</a></li>
+          <li><a href="iletisim.html" class="active">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container iletisim-container">
+      <section class="iletisim-card">
+        <h1>İletişim</h1>
+        <p>Her türlü görüş, öneri ve iş birliği için bize ulaşabilirsiniz.</p>
+        <form class="iletisim-form">
+          <div class="form-group">
+            <label for="ad">Adınız</label>
+            <input type="text" id="ad" name="ad" placeholder="Adınız" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-posta</label>
+            <input type="email" id="email" name="email" placeholder="E-posta adresiniz" required>
+          </div>
+          <div class="form-group">
+            <label for="mesaj">Mesajınız</label>
+            <textarea id="mesaj" name="mesaj" rows="5" placeholder="Mesajınızı yazın..." required></textarea>
+          </div>
+          <button type="submit" class="iletisim-btn">Gönder</button>
+        </form>
+        <div class="iletisim-socials">
+          <a href="mailto:info@beygirmuhendisi.com" class="footer-social" target="_blank" rel="noopener" aria-label="E-posta">
+            <img src="assets/gmail.png" alt="E-posta" class="footer-social-img">
+          </a>
+          <a href="https://twitter.com/" class="footer-social" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <img src="assets/twitter.png" alt="X (Twitter)" class="footer-social-img">
+          </a>
+          <a href="https://facebook.com/" class="footer-social" target="_blank" rel="noopener" aria-label="Facebook">
+            <img src="assets/facebook.png" alt="Facebook" class="footer-social-img">
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-content container">
+      <div class="footer-logo-title">
+        <img src="assets/logo.png" alt="Logo" class="footer-logo">
+        <span class="footer-title"><span class="footer-title-red">BEYGİR</span> MÜHENDİSİ</span>
+      </div>
+      <div class="footer-socials">
+        <a href="mailto:info@beygirmuhendisi.com" class="footer-social" target="_blank" rel="noopener" aria-label="E-posta">
+          <img src="assets/gmail.png" alt="E-posta" class="footer-social-img">
+        </a>
+        <a href="https://twitter.com/" class="footer-social" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <img src="assets/twitter.png" alt="X (Twitter)" class="footer-social-img">
+        </a>
+        <a href="https://facebook.com/" class="footer-social" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="assets/facebook.png" alt="Facebook" class="footer-social-img">
+        </a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2025 Beygir Mühendisi. Tüm hakları saklıdır.
+      </div>
+    </div>
+  </footer>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <script>
+    // Mobil menü aç/kapa
+    const menuToggle = document.getElementById('mobile-menu');
+    const nav = document.querySelector('nav ul');
+    const overlay = document.getElementById('mobile-overlay');
+    function openMenu() {
+      nav.classList.add('active');
+      menuToggle.classList.add('active');
+      overlay.classList.add('active');
+    }
+    function closeMenu() {
+      nav.classList.remove('active');
+      menuToggle.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+    menuToggle.addEventListener('click', () => {
+      if (nav.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    overlay.addEventListener('click', closeMenu);
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
+</body>
+</html>

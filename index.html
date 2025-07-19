@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beygir Mühendisi - At Yarışı Tahminleri</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="assets/logo.png" alt="Logo" class="logo-img">
+        <span class="logo-title"><span class="logo-title-red">BEYGİR</span> MÜHENDİSİ</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="#">Tahminler</a></li>
+          <li><a href="tutan_tahminler.html">Tutan Tahminler</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+          <li><a href="admin/index.html">Admin Panel</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>At Yarışı Tahminleri</h1>
+        <p>Güncel ve güvenilir at yarışı tahminleri burada!</p>
+      </section>
+      <div class="content-wrapper">
+        <section class="content">
+          <a href="tahminler/2025-07-10.html" class="tahmin-card">
+            <img src="assets/atyarisitahminleri.jpg" alt="At Yarışı Tahminleri" class="tahmin-img">
+            <div class="tahmin-info">
+              <h2>12 TEMMUZ 2025 CUMARTESİ VELİEFENDİ HİPODROMU</h2>
+              <span class="tahmin-link">ALTILI GANYAN TAHMİN İÇİN TIKLAYIN</span>
+            </div>
+          </a>
+        </section>
+        <aside class="tutan-tahminler">
+          <h3>TUTAN TAHMİNLER</h3>
+          <ul class="tutan-list">
+            <li><a href="tahminler/2025-07-10.html">10 Temmuz 2025 - İstanbul</a></li>
+            <li><a href="tahminler/2025-07-08.html">8 Temmuz 2025 - Ankara</a></li>
+            <li><a href="tahminler/2025-07-05.html">5 Temmuz 2025 - İzmir</a></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-content container">
+      <div class="footer-logo-title">
+        <img src="assets/logo.png" alt="Logo" class="footer-logo">
+        <span class="footer-title"><span class="footer-title-red">BEYGİR</span> MÜHENDİSİ</span>
+      </div>
+      <div class="footer-socials">
+        <a href="mailto:info@beygirmuhendisi.com" class="footer-social" target="_blank" rel="noopener" aria-label="E-posta">
+          <img src="assets/gmail.png" alt="E-posta" class="footer-social-img">
+        </a>
+        <a href="https://twitter.com/" class="footer-social" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <img src="assets/twitter.png" alt="X (Twitter)" class="footer-social-img">
+        </a>
+        <a href="https://facebook.com/" class="footer-social" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="assets/facebook.png" alt="Facebook" class="footer-social-img">
+        </a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2025 Beygir Mühendisi. Tüm hakları saklıdır.
+      </div>
+    </div>
+  </footer>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <script>
+    // Mobil menü aç/kapa
+    const menuToggle = document.getElementById('mobile-menu');
+    const nav = document.querySelector('nav ul');
+    const overlay = document.getElementById('mobile-overlay');
+
+    function openMenu() {
+      nav.classList.add('active');
+      menuToggle.classList.add('active');
+      overlay.classList.add('active');
+    }
+    function closeMenu() {
+      nav.classList.remove('active');
+      menuToggle.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    menuToggle.addEventListener('click', () => {
+      if (nav.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    overlay.addEventListener('click', closeMenu);
+    // Menüden bir linke tıklanınca da menü kapansın
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
+</body>
+</html>
